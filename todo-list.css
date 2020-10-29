@@ -1,0 +1,121 @@
+* {
+    margin:0px;
+    padding:0px;
+    box-sizing: border-box;
+    border-radius:0;
+}
+
+body {
+    background:linear-gradient(120deg , rgb(241, 201, 69),rgb(219, 93, 35));
+    color:white;
+    min-height: 100vh;
+    font-family:sans-serif;
+}
+
+header {    
+    font-size:1.7rem;
+    font-family: 'Henny Penny', cursive;
+}
+
+header,form {
+    min-height:20vh;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+
+form input , form button {
+    padding:0.5rem;
+    background-color: white;
+    border:none;
+    border-radius:0px;
+    font-size:2rem;
+    outline: none;
+}
+
+form input {
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+
+form button {
+    color:rgb(236, 118, 63);
+    cursor: pointer;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    transition:background, color 0.5s ease;
+}
+form button:hover {
+    background-color:rgb(236, 118, 63);
+    color:rgb(243, 228, 201);
+}
+
+.todo-container {
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+.todo-list {
+    min-width:30%;
+    list-style: none;
+}
+
+.todo {
+    margin:0.5rem;
+    background-color: white;
+    color:black;
+    font-size:1.5rem;
+    display:flex;
+    justify-content: space-between;
+    transition:all 600ms ease;
+}
+.todo-item {
+    flex:1;
+    align-self: center;
+    padding: 0 0.7rem;
+}
+
+.check-button ,.trash-button {
+    padding:1rem;
+    align-self: center;
+    text-align: center;
+    cursor:pointer;
+    display:inline-block;
+    font-size:1rem;
+    border:none;
+    color:white;
+    outline:none;
+    transition:background 500ms ease;
+}
+.check-button {
+    background-color: rgb(52, 221, 52);
+}
+.check-button:hover {
+    background-color: rgb(27, 207, 27);
+}
+
+.trash-button {
+    background-color: rgb(241, 84, 56);
+}
+.trash-button:hover {
+    background-color: rgb(235, 64, 34);
+    text-decoration: line-through;
+}
+
+
+.checked {
+    text-decoration:line-through;
+    opacity:0.4;
+}
+.checked:hover {
+
+}
+
+.fa-trash ,.fa-check {
+    pointer-events: none;
+}
+
+.fall {
+    transform:translateY(8rem) rotateZ(20deg);
+    opacity:0;
+}
