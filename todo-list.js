@@ -1,70 +1,72 @@
+//VARIABLES ...
 const todoInput = document.querySelector(".todo-input");
-const todoContainer = document.querySelector(".todo-container");
-const todoList = document.querySelector(".todo-list");
 const todoButton = document.querySelector(".todo-button");
-
+const listContainer = document.getElementById("todo-list");
 
 
 //EVENTS ...
-todoButton.addEventListener("click",addTodoList);
-todoList.addEventListener("click",deleteCheck);
-
-
-
+todoButton.addEventListener("click", addTodoList);
 
 
 
 //FUNCTIONS ...
 function addTodoList(event) {
-    //STOP the refresh..
     event.preventDefault();
 
-    //Create todo div ...
-    const todoDiv = document.createElement("div");
-    todoDiv.classList.add("todo");
-
-    //Create todo list ...
-    const todo = document.createElement("li");
-    todo.classList.add("todo-item");
-
-    if(todoInput.value !== "") {
-        todo.innerText = todoInput.value;
-        
-        //Append todo list to todo div ...
-        todoDiv.appendChild(todo);
-
-        //Creat check button ...
-        const checkButton = document.createElement("button");
-        checkButton.innerHTML = '<i class="fas fa-check"></i>';
-        checkButton.classList.add("check-button");
-        todoDiv.appendChild(checkButton);
-
-        //Creat delete button ...
-        const trashButton = document.createElement("button");
-        trashButton.innerHTML = '<i class="fas fa-trash"></i>';
-        trashButton.classList.add("trash-button");
-        todoDiv.appendChild(trashButton);
-        
-        //Append all to todo-list ...
-        todoList.appendChild(todoDiv);
-
-        //Delete the input value ...
-        todoInput.value = "";
+    if(todoInput.value === "") {
+        alert("the input is empty plez enter samthing");
     } else {
-        alert("pleez inter in the input");
+        
+    //ADD div ...
+    const todo = document.createElement("div");
+    todo.classList.add("todo");
+    //append div to div-container ...
+    listContainer.appendChild(todo);
+
+    //ADD li ...
+    const todoList = document.createElement("li");
+    todoList.classList.add("todo-list");
+    todoList.innerText = todoInput.value;
+    //append li to div ...
+    todo.appendChild(todoList);
+
+    //ADD check button ...
+    const checkBtn = document.createElement("button");
+    checkBtn.innerHTML = '<i class="fas fa-check"></i>';
+    checkBtn.classList.add("check-btn");
+    
+    //ADD trash button ...
+    const trashBtn = document.createElement("button");
+    trashBtn.innerHTML = '<i class="fas fa-trash"></i>';
+    trashBtn.classList.add("trash-btn");
+
+    //append buttons to div ...
+    todo.appendChild(checkBtn);
+    todo.appendChild(trashBtn);
+    
+    //Return the todoInput empty ...
+    todoInput.value = "";
+
+        //Buttons events ...
+        todo.addEventListener("click", deleteCheck);
     }
+
+
 }
 
 function deleteCheck(e) {
-    const item = e.target
-    if(item.classList[0] === "trash-button") {
-        const par = item.parentElement;
-        par.classList.add("fall");
-        par.addEventListener("transitionend" , function(){
-            par.remove();
+    //wich one click on ...
+    const item = e.target;
+    const parent = item.parentNode;
+
+    //check if the click is on check or delete button ...
+    if(item.classList[0] === "check-btn") {
+        parent.classList.toggle("checked"); 
+    } else if(item.classList[0] === "trash-btn") {
+        parent.classList.add("ani-remo");
+        parent.addEventListener("transitionend" , function(){
+            parent.remove();
         })
-    } else if (item.classList[0] === "check-button") {
-        const par = item.parentElement;
-        par.classList.toggle("checked")
     }
+
 }

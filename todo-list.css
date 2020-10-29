@@ -1,121 +1,131 @@
+/*-----  -----*/
+/*----- Start global styling -----*/
 * {
-    margin:0px;
-    padding:0px;
-    box-sizing: border-box;
+    padding:0;
+    margin:0;
+    box-sizing:border-box;
     border-radius:0;
 }
+/*----- End global styling -----*/
 
+/*----- Start styling body -----*/
 body {
-    background:linear-gradient(120deg , rgb(241, 201, 69),rgb(219, 93, 35));
-    color:white;
+    background:linear-gradient(120deg ,rgb(255, 227, 70) ,rgb(248, 92, 1));
     min-height: 100vh;
-    font-family:sans-serif;
+    font-family: 'Capriola', sans-serif;
 }
 
-header {    
-    font-size:1.7rem;
-    font-family: 'Henny Penny', cursive;
-}
+/*----- End styling body -----*/
 
-header,form {
-    min-height:20vh;
+/*----- Start styling header -----*/
+header {
+    font-size:2.6rem;
+    min-height: 20vh;
     display:flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
+    justify-content: center;
+    color:white;
+    font-family: 'Fredericka the Great', cursive;
 }
+/*----- End styling header -----*/
 
+/*----- Start styling form -----*/
+form {
+    display:flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items:center;
+    min-height:20vh;
+}
 form input , form button {
-    padding:0.5rem;
-    background-color: white;
+    background-color:white;
     border:none;
-    border-radius:0px;
-    font-size:2rem;
     outline: none;
+    font-size:1.8rem;
 }
-
 form input {
-    border-top-left-radius: 5px;
-    border-bottom-left-radius: 5px;
+    min-width:23rem;
+    height:3.5rem;
+    padding:0 0.7rem;
+    border-bottom-left-radius:5px;
+    border-top-left-radius:5px;
 }
-
 form button {
-    color:rgb(236, 118, 63);
-    cursor: pointer;
-    border-top-right-radius: 5px;
-    border-bottom-right-radius: 5px;
-    transition:background, color 0.5s ease;
+    height:3.5rem;
+    width:3.5rem;
+    color:rgb(209, 91, 23);
+    cursor:pointer;
+    transition:color 500ms ease,background 500ms ease;
+    border-bottom-right-radius:5px;
+    border-top-right-radius:5px;
 }
 form button:hover {
-    background-color:rgb(236, 118, 63);
-    color:rgb(243, 228, 201);
+    background-color: rgb(226, 97, 23);
+    color:white;
 }
+/*----- End styling form -----*/
 
-.todo-container {
+/*----- Start styling todos lists -----*/
+#todo-container {
+    display: flex;
+    flex-direction:column;
+    align-items:center;
+}
+.todo {
     display:flex;
-    justify-content: center;
+    flex-direction: row;
     align-items: center;
+    justify-content: space-between;
+    background:white; 
+    min-width: 15rem;
+    list-style: none;
+    margin:1rem;
+    font-size:1rem;
+    transition:all 900ms ease;
 }
 .todo-list {
-    min-width:30%;
-    list-style: none;
-}
-
-.todo {
-    margin:0.5rem;
-    background-color: white;
-    color:black;
-    font-size:1.5rem;
-    display:flex;
-    justify-content: space-between;
-    transition:all 600ms ease;
-}
-.todo-item {
     flex:1;
-    align-self: center;
-    padding: 0 0.7rem;
+    font-size:1.5rem; 
+    padding:0 0.5rem;
 }
-
-.check-button ,.trash-button {
-    padding:1rem;
-    align-self: center;
-    text-align: center;
-    cursor:pointer;
-    display:inline-block;
-    font-size:1rem;
+.trash-btn , .check-btn {
+    height:2.5rem;
+    width:2.5rem;
+    outline:none;
     border:none;
     color:white;
-    outline:none;
-    transition:background 500ms ease;
+    transition:background 300ms ease;
+    cursor:pointer;
 }
-.check-button {
-    background-color: rgb(52, 221, 52);
-}
-.check-button:hover {
-    background-color: rgb(27, 207, 27);
+.fa-check, .fa-trash {
+    pointer-events:none;
 }
 
-.trash-button {
-    background-color: rgb(241, 84, 56);
+/*styling the buttons*/
+
+.trash-btn {
+    background:rgba(255, 0, 0, 0.76);
 }
-.trash-button:hover {
-    background-color: rgb(235, 64, 34);
-    text-decoration: line-through;
+.check-btn {
+    background:rgba(17, 207, 17, 0.747);
+}
+.trash-btn:hover {
+    background:rgba(255, 0, 0, 0.959);
+}
+.check-btn:hover {
+    background:rgb(10, 199, 10);
 }
 
+/*if the button clicked on*/
 
 .checked {
     text-decoration:line-through;
-    opacity:0.4;
-}
-.checked:hover {
-
+    opacity:0.5;
 }
 
-.fa-trash ,.fa-check {
-    pointer-events: none;
-}
-
-.fall {
+.ani-remo {
     transform:translateY(8rem) rotateZ(20deg);
     opacity:0;
 }
+/*----- End styling todos lists -----*/
