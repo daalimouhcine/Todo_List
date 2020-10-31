@@ -6,6 +6,7 @@ const filterTodo = document.querySelector(".filter-todo");
 
 
 //EVENTS ...
+document.addEventListener("DOMContentLoaded" , returnStorage);
 todoButton.addEventListener("click", addTodoList);
 todoList.addEventListener("click", deleteCheck);
 filterTodo.addEventListener("click",filter)
@@ -33,6 +34,10 @@ function addTodoList(event) {
     //append li to div ...
     todo.appendChild(newTodo);
 
+    //STORE the todo in LOCALSTORAGE ...
+    todoStorage(todoInput.value);
+
+
     //ADD check button ...
     const checkBtn = document.createElement("button");
     checkBtn.innerHTML = '<i class="fas fa-check"></i>';
@@ -46,11 +51,10 @@ function addTodoList(event) {
     //append buttons to div ...
     todo.appendChild(checkBtn);
     todo.appendChild(trashBtn);
-    
+
     //Return the todoInput empty ...
     todoInput.value = "";
 
-        //Buttons events ...
     }
 
 
@@ -66,6 +70,7 @@ function deleteCheck(e) {
         parent.classList.toggle("completed"); 
     } else if(item.classList[0] === "trash-btn") {
         parent.classList.add("ani-remo");
+        deleteStorage(parent);
         parent.addEventListener("transitionend" , function(){
             parent.remove();
         })
@@ -73,15 +78,15 @@ function deleteCheck(e) {
 }
 
 
-function filter(e){
-    const items = todoList.childNodes;
-    items.forEach(function(todo) {
+function filter(e) {
+    const item = todoList.childNodes;
+    item.forEach(todo => {
         switch(e.target.value) {
-            case 'all':
+            case "all":
                 todo.style.display = "flex";
                 break;
 
-            case 'completed':
+            case "completed":
                 if(todo.classList.contains("completed")) {
                     todo.style.display = "flex";
                 } else {
@@ -98,4 +103,77 @@ function filter(e){
                 break;
         }
     })
+}
+
+function todoStorage(item) {
+    // CHECK ---- ar i already have localstorage?
+    let todos;
+
+    if(localStorage.getItem("todos") === null) {
+        todos = [];
+    } else {
+        todos = JSON.parse(localStorage.getItem("todos"))
+    }
+
+    todos.push(item);
+    localStorage.setItem("todos", JSON.stringify(todos));
+}
+
+function returnStorage() {
+        // CHECK ---- ar i already have localstorage?
+        let todos;
+
+        if(localStorage.getItem("todos") === null) {
+            todos = [];
+        } else {
+            todos = JSON.parse(localStorage.getItem("todos"))
+        }
+
+        todos.forEach(function(item) {
+            
+                //ADD div ...
+                const todo = document.createElement("div");
+                todo.classList.add("todo");
+                //append div to div-container ...
+                todoList.appendChild(todo);
+
+                //ADD li ...
+                const newTodo = document.createElement("li");
+                newTodo.classList.add("todo-list");
+                newTodo.innerText = item;
+                //append li to div ...
+                todo.appendChild(newTodo);
+
+                //ADD check button ...
+                const checkBtn = document.createElement("button");
+                checkBtn.innerHTML = '<i class="fas fa-check"></i>';
+                checkBtn.classList.add("check-btn");
+                
+                //ADD trash button ...
+                const trashBtn = document.createElement("button");
+                trashBtn.innerHTML = '<i class="fas fa-trash"></i>';
+                trashBtn.classList.add("trash-btn");
+
+                //append buttons to div ...
+                todo.appendChild(checkBtn);
+                todo.appendChild(trashBtn);
+
+        })
+}
+
+
+function deleteStorage(item) {
+    // CHECK ---- ar i already have localstorage?
+    let todos;
+
+    if(localStorage.getItem("todos") === null) {
+        todos = [];
+    } else {
+        todos = JSON.parse(localStorage.getItem("todos"))
+    }
+
+    const removeItem = item.children[0].innerText;
+    todos.splice(todos.indexOf(removeItem),1);
+
+    localStorage.setItem("todos", JSON.stringify(todos));
 }
