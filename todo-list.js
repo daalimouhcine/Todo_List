@@ -69,7 +69,7 @@ function deleteCheck(e) {
     if(item.classList[0] === "check-btn") {
         parent.classList.toggle("completed"); 
     } else if(item.classList[0] === "trash-btn") {
-        parent.classList.add("ani-remo");
+        parent.classList.add("fall");
         deleteStorage(parent);
         parent.addEventListener("transitionend" , function(){
             parent.remove();
