@@ -81,7 +81,6 @@ form button:hover {
     min-width: 18rem;
     list-style: none;
     margin:1rem;
-    font-size:1rem;
     transition:all 900ms ease;
 }
 .todo-list {
@@ -169,3 +168,102 @@ select {
 }
 
 /*----- End styling filter todos -----*/
+
+
+/*----- Start media queris -----*/
+
+@media (max-width:650px) {
+    
+
+header {
+    font-size:2rem;
+    min-height: 20vh;
+}
+
+
+form {
+    max-height:15vh;
+}
+form input , form button {
+    font-size:1.4rem;
+}
+form input {
+    min-width:18rem;
+    height:3rem;
+    margin: 0 0 0 0.5rem ;
+}
+form button {
+    height:3rem;
+    width:3rem;
+}
+}
+
+
+.todo {
+    min-width: 14rem;
+}
+.todo-list {
+    font-size:1.2rem; 
+    padding:0 0.5rem;
+}
+.trash-btn , .check-btn {
+    height:2.2rem;
+    width:2.2rem;
+}
+
+
+.filter-todo {
+    width:7rem;
+    padding:0.7rem;
+}
+.select-div::after {
+    padding:0.54rem;
+}
+
+
+/*----- End media queris -----*/
+
+
+@media (max-width:490px) {
+    header {
+        font-size:1.8rem;
+        min-height: 20vh;
+    }
+    
+    form {
+        max-height:15vh;
+    }
+    form input , form button {
+        font-size:1.4rem;
+    }
+    form input {
+        min-width:10rem;
+        height:3rem;
+    }
+    form button {
+        height:3rem;
+        width:3rem;
+    }
+    
+    
+    .todo {
+        min-width: 14rem;
+    }
+    .todo-list {
+        font-size:1.2rem; 
+        padding:0 0.5rem;
+    }
+    .trash-btn , .check-btn {
+        height:2.2rem;
+        width:2.2rem;
+    }
+    
+    
+    .filter-todo {
+        width:7rem;
+        padding:0.62rem;
+    }
+    .select-div::after {
+        padding:0.45rem;
+    }
+}
