@@ -196,7 +196,6 @@ form button {
     height:3rem;
     width:3rem;
 }
-}
 
 
 .todo {
@@ -219,6 +218,9 @@ form button {
 .select-div::after {
     padding:0.54rem;
 }
+
+}
+
 
 
 /*----- End media queris -----*/
